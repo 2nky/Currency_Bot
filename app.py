@@ -3,6 +3,7 @@ import requests
 import telebot
 
 TOKEN = "6027550278:AAEDIJr4skazdPv0yinQ6rMws0SVJl4psUc"
+API_TOKEN = 'ALTXe7rVH2CZrBfWaJPcZ4FeBuUK9X3r4Jo1YWsl'
 
 bot = telebot.TeleBot(TOKEN)
 
@@ -26,7 +27,7 @@ class GetPrice:
 
         quote_ticker, base_ticker = keys[quote], keys[base]
         r = requests.get(
-            f'http://api.freecurrencyapi.com/v1/latest?apikey=ALTXe7rVH2CZrBfWaJPcZ4FeBuUK9X3r4Jo1YWsl&currencies={base_ticker}&base_currency={quote_ticker}'
+            f'http://api.freecurrencyapi.com/v1/latest?apikey={API_TOKEN}&currencies={base_ticker}&base_currency={quote_ticker}'
         )
         total_base = json.loads(r.content)["data"][keys[base]]
         return total_base * amount
