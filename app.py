@@ -77,15 +77,6 @@ def convert(messege: telebot.types.Message):
         if len(values) != 3:
             raise ConvertionException
 
-        if quote == base:
-            raise EqualValues
-
-        if quote not in keys:
-            raise QuoteException
-
-        if base not in keys:
-            raise BaseException
-
         result = GetPrice.get_price(quote, base, float(amount))
         text = f'{amount} {quote} в {base} - {result}'
         bot.send_message(messege.chat.id, text)
