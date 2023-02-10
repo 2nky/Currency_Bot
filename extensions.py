@@ -28,17 +28,13 @@ class GetPrice:
 
 
 class ConvertionException(Exception):
-    def __str__(self):
-        return "Неверное количество параметров.\nВведи команду еще раз."
+    message = "Неверное количество параметров.\nВведи команду еще раз."
 
 class QuoteException(Exception):
-    def __str__(self):
-        return "Введена несущетсвующая переводимая валюта.\nВведи команду еще раз."
+    message = "Введена несущеcтвующая переводимая валюта.\nВведи команду еще раз."
 
 class BaseCurrencyException(Exception):
-    def __str__(self):
-        return "Введена несущетсвующая валюта для перевода.\n Введи команду еще раз."
+    message = "Введена несущеcтвующая валюта для перевода.\nВведи команду еще раз."
 
 class EqualValues(Exception):
-    def __str__(self):
-        return "Одинаковые валюты для конвертации.\n Введи команду еще раз."
+    message = "Одинаковые валюты для конвертации.\nВведи команду еще раз."

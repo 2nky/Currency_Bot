@@ -16,7 +16,7 @@ def start(message: telebot.types.Message):
 
 @bot.message_handler(commands=["values"])
 def values(messege: telebot.types.Message):
-    text = "<Достпные валюты>:"
+    text = "<Доступные валюты>:"
     for key in keys.keys():
         text = "\n" .join((text, key, ))
     bot.reply_to(messege, text)
@@ -24,33 +24,34 @@ def values(messege: telebot.types.Message):
 @bot.message_handler(content_types =["text", ])
 def convert(messege: telebot.types.Message):
     values = messege.text.split(" ")
-    quote, base, amount = values
 
     try:
         if len(values) != 3:
             raise ConvertionException
 
+        quote, base, amount = values
+
         result = GetPrice.get_price(quote, base, float(amount))
-        text = f'{amount} {quote} в {base} - {result}'
+        text = f'{amount} {quote} в {base} - {result:.2f}'
         bot.send_message(messege.chat.id, text)
 
     except EqualValues:
-        bot.reply_to(messege, "Одинаковые валюты для конвртации.\n Введи команду еще раз.")
+        bot.reply_to(messege, "Одинаковые валюты для конвертации.\nВведи команду еще раз.")
 
     except QuoteException:
-        bot.reply_to(messege, "Введена несущетсвующая переводимая валюта.\nВведи команду еще раз.")
+        bot.reply_to(messege, "Введена несуществующая конвертируемая валюта.\nВведи команду еще раз.")
 
     except BaseCurrencyException:
-        bot.reply_to(messege, "Введена несущетсвующая валюта для перевода.\n Введи команду еще раз.")
+        bot.reply_to(messege, "Введена несуществующая валюта для конвертации.\nВведи команду еще раз.")
 
     except ConvertionException:
-        bot.reply_to(messege, "Неверное количествоа параметров.\nВведи команду еще раз.")
+        bot.reply_to(messege, "Неверное количество параметров.\nВведи команду еще раз.")
 
     except ValueError:
-        bot.reply_to(messege,"Ошибка ввода количесвта валюты.\n Введи команду еще раз.")
+        bot.reply_to(messege,"Ошибка ввода количесвта валюты.\nВведи команду еще раз.")
 
     except:
-        bot.reply_to(messege, "Ошибка сервера.\n Введи команду еще раз.")
+        bot.reply_to(messege, "Ошибка сервера.\nВведи команду еще раз.")
         raise
 
 
