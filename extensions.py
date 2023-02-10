@@ -43,6 +43,4 @@ class EqualValues(Exception):
     def __str__(self):
         return "Одинаковые валюты для конвртации.\n Введи команду еще раз."
 
-class AmountExeption(Exception):
-    def __str__(self):
-        return "Количесто валюты должно быть числом.\n Введи команду еще раз."
+

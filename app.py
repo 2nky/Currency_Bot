@@ -2,8 +2,7 @@ import telebot
 
 from config import TOKEN
 from constants import keys
-from extensions import ConvertionException, GetPrice, EqualValues, QuoteException, BaseCurrencyException, AmountExeption
-
+from extensions import ConvertionException, GetPrice, EqualValues, QuoteException, BaseCurrencyException
 
 bot = telebot.TeleBot(TOKEN)
 
@@ -47,11 +46,11 @@ def convert(messege: telebot.types.Message):
     except ConvertionException:
         bot.reply_to(messege, "Неверное количествоа параметров.\nВведи команду еще раз.")
 
-    except AmountExeption:
-        bot.reply_to(messege, "Количесто валюты должно быть числом.\n Введи команду еще раз.")
+    except ValueError:
+        bot.reply_to(messege,"Ошибка ввода количесвта валюты.\n Введи команду еще раз.")
 
     except:
-        bot.reply_to(messege, "Ошибка сервера.\nВведи команду еще раз.")
+        bot.reply_to(messege, "Ошибка сервера.\n Введи команду еще раз.")
         raise
 
 
