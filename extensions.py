@@ -29,7 +29,7 @@ class GetPrice:
 
 class ConvertionException(Exception):
     def __str__(self):
-        return "Неверное количествоа параметров.\nВведи команду еще раз."
+        return "Неверное количество параметров.\nВведи команду еще раз."
 
 class QuoteException(Exception):
     def __str__(self):
@@ -41,6 +41,4 @@ class BaseCurrencyException(Exception):
 
 class EqualValues(Exception):
     def __str__(self):
-        return "Одинаковые валюты для конвртации.\n Введи команду еще раз."
-
-
+        return "Одинаковые валюты для конвертации.\n Введи команду еще раз."

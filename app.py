@@ -9,9 +9,9 @@ bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=["start", "help"])
 def start(message: telebot.types.Message):
-    text = "Чтобы конвертировать валюту введите:\n<название переводимой валюты>\n" \
-        "<название валюты, в которую переводите> \n" \
-        "<количество валюты> \n\n Чтобы увидеть список доступных валют введите:\n/values"
+    text = "Чтобы конвертировать валюту введи:\n<название конвертируемой валюты>\n" \
+        "<название валюты, в которую конвертируем> \n" \
+        "<количество валюты> \n\n Чтобы увидеть список доступных валют введи:\n/values"
     bot.reply_to(message, text)
 
 @bot.message_handler(commands=["values"])
